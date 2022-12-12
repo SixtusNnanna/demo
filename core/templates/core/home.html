@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="{% static 'assets/img/favicon.ico' %}">
+{% block title %}<title>Dashboard</title>{% endblock %}
+<!-- Bootstrap core CSS -->
+<link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="{% static 'assets/css/mediumish.css' %}" rel="stylesheet">
+</head>
+<body>  
+    <nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container">
+            <h1><em><strong> <i>SmartEX</i></strong></em></h1>
+        </div>
+        </nav>
+    {% block content%}
+    <div class="container">
+        <span >
+            <i>
+                <h5><a href="{% url 'create_balance' %}" title="Enter name and amount you want to manage">Click</a> to set balance</h5>
+            </i>
+        </span>
+    </div>
+    <br>
+    {% if user.is_superuser %}
+        {%  for account in object_list %}
+        <div class="graybg">
+            <div class="container">
+                <div class="row listrecent listrelated">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-block">
+                                <h2 class="card-title">{{account.name}}</h2>
+                                <div class="metafooter">
+                                    <h1><a href="{% url 'expenses' account.pk %}"><Nav></Nav>{{account.balance }}</a></h1>                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        {% for account in owner_account %}
+        <div class="graybg">
+            <div class="container">
+                <div class="row listrecent listrelated">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-block">
+                                <h2 class="card-title">{{account.name}}</h2>
+                                <div class="metafooter">
+                                    <h1><a href="{% url 'expenses' account.pk %}">N{{account.balance }}</a></h1>                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+			<!-- end post -->
+
+			
+
+
+<br><br><br><br>
+<div class="container">
+	<div class="footer">
+		<p class="pull-left">
+			 Copyright &copy; 2022 <a href="http://sixtusn.pythonanywhere.com/" target="_blank">sixtus</a>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+</div>
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/ie10-viewport-bug-workaround.js' %}"></script>
+<script src="{% static 'assets/js/mediumish.js' %}"></script>
+</body>
+</html>

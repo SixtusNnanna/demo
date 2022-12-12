@@ -1,0 +1,30 @@
+{%  extends 'core/home.html'%}
+{% block title%}<title>Set balance</title>{%endblock%}
+
+{% block content %}
+<div class="container">
+    <div class="container">
+        <div class="container">
+            <div class="container">
+                <div class="container">
+                    <div class="container">
+                    <form method="post">
+                    {%csrf_token%}
+                        {{form.as_p}}
+                    <div class="container">
+                        <input type="submit" value="save">
+                    </div>
+
+                    <script>
+                            var name = "{{ owner.id }}";
+                            document.getElementById("elder").value
+                                = name;
+                        </script>
+                </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

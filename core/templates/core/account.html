@@ -1,0 +1,25 @@
+{% extends 'core/home.html' %}
+{% block title %}<title>{{balance.name}}</title> {% endblock %}
+{% block content %}
+    <!-- begin post -->
+    <div class="expenses_box">
+        
+        <div class="card">
+    <div class="card-block">
+        <h2 class="card-title"> Recommended Monthly Expenses</h2>
+        <p> <i>Dear {{balance.owner}}, this is how we advice to spend your N{{balance.balance}}</i></p>
+        <ul>
+            <li><h4 class="card-text">Savings: N{{savings}}</h4></li>
+            <li><h4 class="card-text">House rent: N{{house}}</h4></li>
+            <li><h4 class="card-text">Groceries: N{{grocery}}</h4></li>
+            <li><h4 class="card-text">Closet: N{{closet}}</h4></li>
+            <li><h4 class="card-text">Jaiye and Shayo: N{{jaiye}}</h4></li>
+            <li><h4 class="card-text">Unforseen Expenses: N{{unforseen}}</h4></li>
+     </ul>
+</div>
+    <!-- end post -->
+
+</div>
+</div>
+</div>
+{% endblock %}
